@@ -16,7 +16,7 @@ export default function Home() {
     {
       name: "Vendors",
       type: "weekly",
-      iconName: "fire",
+      iconName: "banknotes",
       resetDate: {
         weekday: "Sunday",
         hour: 9,
@@ -25,7 +25,7 @@ export default function Home() {
     {
       name: "Commissions",
       type: "weekly",
-      iconName: "fire",
+      iconName: "newspaper",
       resetDate: {
         weekday: "Sunday",
         hour: 9,
@@ -33,7 +33,7 @@ export default function Home() {
     },
     {
       name: "Loot Crates",
-      type: "hourly",
+      type: "trash",
       iconName: "fire",
       resetTimes: [3, 7, 11, 15, 19, 23],
     },

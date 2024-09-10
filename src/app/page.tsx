@@ -1,6 +1,6 @@
 import type { ArrayOfTimers } from "@/types";
 import { Timer } from "@/components/timer";
-import { FireIcon } from "@heroicons/react/24/outline";
+import { FireIcon, BanknotesIcon, NewspaperIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
   const timers: ArrayOfTimers = [
@@ -41,6 +41,9 @@ export default function Home() {
 
   const iconMap = {
     fire: FireIcon,
+    banknotes: BanknotesIcon,
+    newspaper: NewspaperIcon,
+    trash: TrashIcon
   };
 
   return (

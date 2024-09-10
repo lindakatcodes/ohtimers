@@ -3,6 +3,8 @@ interface WeeklyTimer {
   name: string;
   type: "weekly";
   iconName: string;
+  borderColor: string;
+  iconColor: string;
   resetDate: {
     weekday: string;
     hour: number;
@@ -14,6 +16,8 @@ interface HourlyTimer {
   name: string;
   type: "hourly";
   iconName: string;
+  borderColor: string;
+  iconColor: string;
   resetTimes: Array<number>;
 }
 

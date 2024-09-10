@@ -1,10 +1,15 @@
 "use client";
 
 import type { TimerType } from "@/types";
-
+import { Orbitron } from "next/font/google";
 import { useState, useEffect } from "react";
 import { DateTime as dt } from "luxon";
 import { getWeekday } from "@/utils/helpers";
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export function Timer({
   timer,
@@ -61,11 +66,21 @@ export function Timer({
   }, []);
 
   return (
-    <div>
+    <div
+      className={`py-2 lg:py-6 border-2 border-dashed rounded-md ${timer.borderColor} lg:first:col-span-2 lg:last:col-span-2`}
+    >
       {children}
-      <p>{timer.name}</p>
-      <p>Next reset is </p>
-      <p>{countdown}</p>
+      <h2 className="text-center text-2xl mb-1">{timer.name}</h2>
+      <p className="text-center text-md mb-1">Next reset in</p>
+      <p
+        className={`text-2xl mb-2 font-bold ${orbitron.className} flex gap-1 justify-center`}
+      >
+        {countdown.split("").map((val, idx) => (
+          <span key={idx} className="min-w-[20px] text-center">
+            {val}
+          </span>
+        ))}
+      </p>
     </div>
   );
 }

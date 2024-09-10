@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-stone-900 text-stone-200 py-6 px-3">
       <body className={`${figtree.className} antialiased`}>{children}</body>
     </html>
   );

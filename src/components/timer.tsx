@@ -25,7 +25,6 @@ export function Timer({
       const currentDT = dt.now();
 
       if (timer.type === "weekly") {
-        const currentWeekday = currentDT.get("weekday");
         const weekday = getWeekday(timer.resetDate.weekday);
 
         let resetDate = dt.fromObject({
@@ -34,9 +33,14 @@ export function Timer({
           minute: timer.resetDate.minutes || 0,
         });
 
-        if (currentWeekday === weekday) {
-          // we need to move this a week ahead
-          resetDate = resetDate.plus({ days: 7 });
+        // date must be in the future - so if we're already past the day and hour, we need to update the reset date to be the next possible value
+        if (
+          currentDT.day >= resetDate.day &&
+          currentDT.hour >= resetDate.hour
+        ) {
+          const weekAheadOfReset = resetDate.plus({ days: 7 });
+          const daysToMove = weekAheadOfReset.day - resetDate.day;
+          resetDate = resetDate.plus({ days: daysToMove });
         }
 
         setCountdown(
@@ -67,11 +71,11 @@ export function Timer({
 
   return (
     <div
-      className={`py-2 lg:py-6 border-2 border-dashed rounded-md ${timer.borderColor} lg:first:col-span-2 lg:last:col-span-2`}
+      className={`min-w-full py-2 lg:py-6 border-2 border-dashed rounded-md ${timer.borderColor} lg:first:col-span-2 lg:last:col-span-2`}
     >
       {children}
-      <h2 className="text-center text-2xl mb-1">{timer.name}</h2>
-      <p className="text-center text-md mb-1">Next reset in</p>
+      <h2 className="text-center text-2xl mb-1.5">{timer.name}</h2>
+      <p className="text-center text-md mb-0.5">Next reset in</p>
       <p
         className={`text-2xl mb-2 font-bold ${orbitron.className} flex gap-1 justify-center`}
       >

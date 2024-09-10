@@ -1,6 +1,8 @@
 import type { ArrayOfTimers } from "@/types";
 import { Timer } from "@/components/timer";
 import { FireIcon, BanknotesIcon, NewspaperIcon, TrashIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+import bgTexture from "../assets/texture-concrete-gritty.jpg";
 
 export default function Home() {
   const timers: ArrayOfTimers = [
@@ -56,18 +58,33 @@ export default function Home() {
 
   return (
     <main>
-      <h1 className="text-5xl text-center mb-4">Once Human Reset Timers</h1>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:container lg:mx-auto">
+      <h1 className="text-5xl text-center mb-10 font-bold">
+        Once Human Reset Timers
+      </h1>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:max-w-5xl lg:mx-auto">
         {timers.map((timer, idx) => {
           const TimerIcon = iconMap[timer.iconName];
 
           return (
             <Timer timer={timer} key={idx}>
-              <TimerIcon className={`${timer.iconColor} w-28 h-28 mx-auto`} />
+              <TimerIcon className={`${timer.iconColor} size-24 mx-auto`} />
             </Timer>
           );
         })}
       </div>
+      <Image
+        alt=""
+        src={bgTexture}
+        fill
+        placeholder="blur"
+        quality={50}
+        sizes="100vw"
+        style={{
+          objectFit: "cover",
+          opacity: 0.1,
+          zIndex: -1,
+        }}
+      />
     </main>
   );
 }

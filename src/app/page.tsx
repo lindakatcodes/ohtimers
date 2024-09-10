@@ -1,54 +1,62 @@
-interface WeeklyTimer {
-  name: string;
-  type: "weekly";
-  resetDate: Date;
-}
-
-interface HourlyTimer {
-  name: string;
-  type: "hourly";
-  resetTimes: Array<number>;
-}
-
-type TimerTypes = Array<WeeklyTimer | HourlyTimer>;
+import type { ArrayOfTimers } from "@/types";
+import { Timer } from "@/components/timer";
+import { FireIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
-  const timers: TimerTypes = [
+  const timers: ArrayOfTimers = [
     {
       name: "Purification",
       type: "weekly",
-      resetDate: new Date("2024-09-09T07:00:00"),
+      iconName: "fire",
+      resetDate: {
+        weekday: "Monday",
+        hour: 7,
+      },
     },
     {
       name: "Vendors",
       type: "weekly",
-      resetDate: new Date("2024-09-15T09:00:00"),
+      iconName: "fire",
+      resetDate: {
+        weekday: "Sunday",
+        hour: 9,
+      },
     },
     {
       name: "Commissions",
       type: "weekly",
-      resetDate: new Date("2024-09-15T09:00:00"),
+      iconName: "fire",
+      resetDate: {
+        weekday: "Sunday",
+        hour: 9,
+      },
     },
     {
       name: "Loot Crates",
       type: "hourly",
-      resetTimes: [3, 7, 11],
+      iconName: "fire",
+      resetTimes: [3, 7, 11, 15, 19, 23],
     },
   ];
+
+  const iconMap = {
+    fire: FireIcon,
+  };
 
   return (
     <main>
       <h1>Hello world</h1>
-      {timers.map((timer, idx) => (
-        <div key={idx}>
-          <p>{timer.name}</p>
-          <p>
-            {timer.type === "weekly"
-              ? timer.resetDate.toString()
-              : timer.resetTimes[0]}
-          </p>
-        </div>
-      ))}
+      {timers.map((timer, idx) => {
+        const TimerIcon = iconMap[timer.iconName];
+
+        return (
+          <div key={idx}>
+            <Timer timer={timer}>
+              <TimerIcon />
+            </Timer>
+          </div>
+        );
+      })}
     </main>
   );
 }

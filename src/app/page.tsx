@@ -33,8 +33,8 @@ export default function Home() {
     },
     {
       name: "Loot Crates",
-      type: "trash",
-      iconName: "fire",
+      type: "hourly",
+      iconName: "trash",
       resetTimes: [3, 7, 11, 15, 19, 23],
     },
   ];

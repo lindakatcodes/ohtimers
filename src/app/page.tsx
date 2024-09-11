@@ -1,8 +1,13 @@
-import type { ArrayOfTimers } from "@/types";
-import { Timer } from "@/components/timer";
-import { FireIcon, BanknotesIcon, NewspaperIcon, TrashIcon } from "@heroicons/react/24/outline";
+import type { ArrayOfTimers } from "./types";
+import {
+  BanknotesIcon,
+  FireIcon,
+  NewspaperIcon,
+  TrashIcon,
+} from "@heroicons/react/24/outline";
 import Image from "next/image";
-import bgTexture from "../assets/texture-concrete-gritty.jpg";
+import bgTexture from "./texture-concrete-gritty.webp";
+import { Timer } from "./timer";
 
 export default function Home() {
   const timers: ArrayOfTimers = [

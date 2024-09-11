@@ -8,6 +8,7 @@ import {
 import Image from "next/image";
 import bgTexture from "./texture-concrete-gritty.webp";
 import { Timer } from "./timer";
+import Link from "next/link";
 
 export default function Home() {
   const timers: ArrayOfTimers = [
@@ -63,10 +64,10 @@ export default function Home() {
 
   return (
     <main>
-      <h1 className="text-5xl text-center mb-10 font-bold">
+      <h1 className="text-5xl text-center mb-8 font-bold">
         Once Human Reset Timers
       </h1>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:max-w-5xl lg:mx-auto">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:max-w-5xl lg:mx-auto mb-8">
         {timers.map((timer, idx) => {
           const TimerIcon = iconMap[timer.iconName];
 
@@ -90,6 +91,22 @@ export default function Home() {
           zIndex: -1,
         }}
       />
+      <footer className="text-center text-sm">
+        <p>
+          Built with 💖 by{" "}
+          <Link
+            href="https://lindakat.com"
+            className="underline text-teal-500 font-bold"
+          >
+            LindaKatCodes
+          </Link>{" "}
+          using NextJS, TailwindCSS, Luxon, and Heroicons.
+        </p>
+        <p>
+          This is a fan made site for the game Once Human, released by NetEase,
+          Inc.
+        </p>
+      </footer>
     </main>
   );
 }

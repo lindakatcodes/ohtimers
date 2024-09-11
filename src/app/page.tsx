@@ -5,8 +5,6 @@ import {
   NewspaperIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
-import Image from "next/image";
-import bgTexture from "./texture-concrete-gritty.webp";
 import { Timer } from "./timer";
 import Link from "next/link";
 
@@ -78,19 +76,6 @@ export default function Home() {
           );
         })}
       </div>
-      <Image
-        alt=""
-        src={bgTexture}
-        fill
-        placeholder="blur"
-        quality={50}
-        sizes="100vw"
-        style={{
-          objectFit: "cover",
-          opacity: 0.1,
-          zIndex: -1,
-        }}
-      />
       <footer className="text-center text-sm">
         <p>
           Built with 💖 by{" "}

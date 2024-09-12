@@ -36,7 +36,7 @@ export function getCountdown(timer: TimerType) {
     });
 
     // date must be in the future - so if we're already past the day and hour, we need to update the reset date to be the next possible value
-    if ((currentDT.day === resetDate.day && currentDT.hour >= resetDate.hour) || currentDT.day >= resetDate.day) {
+    if ((currentDT.day === resetDate.day && currentDT.hour >= resetDate.hour) || currentDT.day > resetDate.day) {
       const weekAheadOfReset = resetDate.plus({ days: 7 });
       const daysToMove = weekAheadOfReset.day - resetDate.day;
       resetDate = resetDate.plus({ days: daysToMove });

@@ -39,7 +39,7 @@ export function Timer({
         className={`text-2xl mb-2 font-bold ${orbitron.className} flex gap-1 justify-center`}
       >
         {countdown.split("").map((val, idx) => (
-          <span key={idx} className="min-w-[20px] text-center">
+          <span key={idx} className="min-w-[25px] text-center">
             {val}
           </span>
         ))}
